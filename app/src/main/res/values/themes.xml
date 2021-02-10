@@ -13,4 +13,12 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MoviePoster">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:transitionName" tools:targetApi="lollipop">moviePosterTransition</item>
+        <item name="android:background">@color/lightGray</item>
+    </style>
+
 </resources>

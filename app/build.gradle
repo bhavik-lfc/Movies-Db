@@ -20,13 +20,13 @@ android {
     buildTypes {
         // Add this debug config to provide debug settings
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
             buildConfigField("String", "API_KEY", "\"991b9b3b3956b64c41cff7a9f665469a\"")
         }
         release {
             minifyEnabled true // to apply the proguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
             buildConfigField("String", "API_KEY", "\"991b9b3b3956b64c41cff7a9f665469a\"")
         }
     }
@@ -83,6 +83,11 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging"
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofit_adapter_factory"
+
+    // Database
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_rx"
 
     // Reactive
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"

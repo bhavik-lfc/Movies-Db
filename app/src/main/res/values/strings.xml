@@ -8,4 +8,5 @@
     </string>
     <string name="server_connection_error">Not able to connect, please retry again</string>
     <string name="movie_image">Movie Image</string>
+    <string name="sort_by">Sort By</string>
 </resources>

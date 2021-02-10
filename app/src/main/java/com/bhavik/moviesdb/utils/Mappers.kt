@@ -21,7 +21,8 @@ object Mappers {
                     it.vote_count,
                     it.vote_average,
                     stringToDate(it.release_date),
-                    it.adult
+                    it.adult,
+                    it.popularity
                 )
             )
         }

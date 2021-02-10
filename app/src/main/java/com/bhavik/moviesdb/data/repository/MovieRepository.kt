@@ -18,9 +18,25 @@ class MovieRepository @Inject constructor(
 
     fun getPopularMovies(): Single<List<Movie>> = databaseService.movieDao().getAll()
 
-
     fun saveMovies(movies: List<Movie>): Single<List<Long>> =
         databaseService.movieDao().insert(movies)
 
+    fun getMovieAscending(): Single<List<Movie>> =
+        databaseService.movieDao().getMovieAscending()
+
+    fun getMovieDescending(): Single<List<Movie>> =
+        databaseService.movieDao().getMovieDescending()
+
+    fun getReleaseAscending(): Single<List<Movie>> =
+        databaseService.movieDao().getReleaseAscending()
+
+    fun getReleaseDescending(): Single<List<Movie>> =
+        databaseService.movieDao().getReleaseDescending()
+
+    fun getPopularityAscending(): Single<List<Movie>> =
+        databaseService.movieDao().getPopularityAscending()
+
+    fun getPopularityDescending(): Single<List<Movie>> =
+        databaseService.movieDao().getPopularityDescending()
 
 }

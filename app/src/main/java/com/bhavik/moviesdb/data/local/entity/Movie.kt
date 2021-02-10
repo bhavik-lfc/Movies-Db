@@ -39,6 +39,10 @@ data class Movie(
 
     @ColumnInfo(name = "adult")
     @NotNull
-    val adult: Boolean
+    val adult: Boolean,
+
+    @ColumnInfo(name = "popularity")
+    @NotNull
+    val popularity: Double
 
 )

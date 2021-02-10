@@ -1,5 +1,6 @@
 package com.bhavik.moviesdb.ui.movielist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -11,6 +12,8 @@ import com.bhavik.moviesdb.data.local.MovieSort
 import com.bhavik.moviesdb.databinding.ActivityMoviesListBinding
 import com.bhavik.moviesdb.di.component.ActivityComponent
 import com.bhavik.moviesdb.ui.base.BaseActivity
+import com.bhavik.moviesdb.ui.moviedetail.MovieDetailActivity
+import com.bhavik.moviesdb.utils.Constants
 import kotlinx.android.synthetic.main.activity_movies_list.*
 
 
@@ -64,8 +67,12 @@ class MoviesListActivity : BaseActivity<ActivityMoviesListBinding, MoviesListVie
     }
 
     private fun setRecyclerView() {
+
         moviesListAdapter = MoviesListAdapter {
-            Toast.makeText(this@MoviesListActivity, it.toString(), Toast.LENGTH_LONG).show()
+            Intent(this@MoviesListActivity, MovieDetailActivity::class.java).run {
+                putExtra(Constants.MOVIE, it)
+                startActivity(this)
+            }
         }
 
         rvMovies.apply {

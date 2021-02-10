@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bhavik.moviesdb.data.repository.MovieRepository
 import com.bhavik.moviesdb.di.ViewModelProviderFactory
 import com.bhavik.moviesdb.ui.base.BaseActivity
+import com.bhavik.moviesdb.ui.moviedetail.MovieDetailViewModel
 import com.bhavik.moviesdb.ui.movielist.MoviesListViewModel
 import com.bhavik.moviesdb.utils.NetworkHelper
 import com.bhavik.moviesdb.utils.SchedulerProvider
@@ -30,6 +31,21 @@ class ActivityModule(private val activity: BaseActivity<*, *>) {
                 networkHelper
             )
         }).get(MoviesListViewModel::class.java)
+
+
+    @Provides
+    fun provideMovieDetailViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper
+    ): MovieDetailViewModel = ViewModelProvider(
+        activity, ViewModelProviderFactory(MovieDetailViewModel::class) {
+            MovieDetailViewModel(
+                schedulerProvider,
+                compositeDisposable,
+                networkHelper
+            )
+        }).get(MovieDetailViewModel::class.java)
 
 
 }

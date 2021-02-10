@@ -2,6 +2,7 @@ package com.bhavik.moviesdb.di.component
 
 import com.bhavik.moviesdb.di.ActivityScope
 import com.bhavik.moviesdb.di.module.ActivityModule
+import com.bhavik.moviesdb.ui.moviedetail.MovieDetailActivity
 import com.bhavik.moviesdb.ui.movielist.MoviesListActivity
 import dagger.Component
 
@@ -10,5 +11,7 @@ import dagger.Component
 interface ActivityComponent {
 
     fun inject(activity: MoviesListActivity)
+
+    fun inject(activity: MovieDetailActivity)
 
 }

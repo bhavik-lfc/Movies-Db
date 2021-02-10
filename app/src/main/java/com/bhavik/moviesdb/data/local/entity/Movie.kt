@@ -1,11 +1,14 @@
 package com.bhavik.moviesdb.data.local.entity
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 import org.jetbrains.annotations.NotNull
 import java.util.*
 
+@Parcelize
 @Entity(tableName = "movie")
 data class Movie(
 
@@ -45,4 +48,4 @@ data class Movie(
     @NotNull
     val popularity: Double
 
-)
+) : Parcelable

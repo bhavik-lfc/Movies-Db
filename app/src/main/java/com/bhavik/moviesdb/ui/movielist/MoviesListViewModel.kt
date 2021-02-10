@@ -1,6 +1,7 @@
 package com.bhavik.moviesdb.ui.movielist
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.bhavik.moviesdb.data.local.MovieSort
 import com.bhavik.moviesdb.data.local.entity.Movie
 import com.bhavik.moviesdb.data.repository.MovieRepository
@@ -19,9 +20,13 @@ class MoviesListViewModel(
     networkHelper: NetworkHelper
 ) : BaseViewModel(schedulerProvider, compositeDisposable, networkHelper) {
 
-    val loading: MutableLiveData<Boolean> = MutableLiveData(true)
+    val progressLoading: MutableLiveData<Boolean> = MutableLiveData(true)
     val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
     val sortStatus: MutableLiveData<MovieSort> = MutableLiveData()
+    val errorStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+    val sortVisibility = Transformations.map(movieList) {
+        it.isNotEmpty()
+    }
 
     init {
         compositeDisposable.add(
@@ -32,12 +37,14 @@ class MoviesListViewModel(
                     movieRepository.saveMovies(movies)
                 }
                 .subscribeOn(schedulerProvider.io())
-                .doFinally {
-                    loading.postValue(false)
-                }
                 .subscribe({
+                    progressLoading.postValue(false)
                     getMovies()
                 }, {
+                    progressLoading.postValue(false)
+                    if (movieList.value.isNullOrEmpty()) {
+                        errorStatus.postValue(true)
+                    }
                 })
         )
     }
@@ -48,7 +55,7 @@ class MoviesListViewModel(
                 .subscribeOn(schedulerProvider.io())
                 .subscribe({
                     if (it.isNotEmpty()) {
-                        loading.postValue(false)
+                        progressLoading.postValue(false)
                         movieList.postValue(it)
                     }
                 }, {

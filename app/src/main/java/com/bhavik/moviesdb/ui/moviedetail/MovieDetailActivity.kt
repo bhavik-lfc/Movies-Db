@@ -1,6 +1,5 @@
 package com.bhavik.moviesdb.ui.moviedetail
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import com.bhavik.moviesdb.R
@@ -16,7 +15,6 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
     override fun provideLayoutId(): Int = R.layout.activity_movie_detail
 
     override fun setupView(savedInstanceState: Bundle?) {
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = intent.getParcelableExtra<Movie>(MOVIE)?.title
     }

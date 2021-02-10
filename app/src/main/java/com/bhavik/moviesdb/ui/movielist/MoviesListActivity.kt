@@ -93,10 +93,6 @@ class MoviesListActivity : BaseActivity<ActivityMoviesListBinding, MoviesListVie
     override fun setupObservers() {
         super.setupObservers()
 
-        viewModel.loading.observe(this, {
-            progressBar.visibility = if (it) View.VISIBLE else View.GONE
-        })
-
         viewModel.movieList.observe(this, {
             it?.run {
                 moviesListAdapter.submitList(this) {

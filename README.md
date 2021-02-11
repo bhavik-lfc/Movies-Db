@@ -1,7 +1,9 @@
 # Shaadi
 
-<img alt="MoviesDb Main Page" height="400px" src="./pictures/home_page.png" />
-<img alt="MoviesDb Main Page" height="400px" src="./pictures/detail_page.png" />
+<p float="left">
+  <img alt="MoviesDb Main Page" height="400px" src="./pictures/home_page.png" />
+  <img alt="MoviesDb Main Page" height="400px" src="./pictures/detail_page.png" />
+</p>
 
 ## Libraries and tools 🛠
 

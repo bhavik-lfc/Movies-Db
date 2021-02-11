@@ -1,4 +1,4 @@
-# Shaadi
+# Movie DB
 
 <p float="left">
   <img alt="MoviesDb Main Page" height="400px" src="./pictures/home_page.png" />
